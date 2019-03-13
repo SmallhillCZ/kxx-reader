@@ -1,0 +1,8 @@
+# dependecies
+node_modules
+
+# data to transform, output
+data
+
+#compiled output
+lib

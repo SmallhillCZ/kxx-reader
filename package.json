@@ -1,0 +1,20 @@
+{
+  "name": "kxxreader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^11.11.3",
+    "typescript": "^3.3.3333"
+  },
+  "dependencies": {
+    "fs-extra": "^7.0.1",
+    "iconv-lite": "^0.4.24",
+    "minimist": "^1.2.0"
+  }
+}
