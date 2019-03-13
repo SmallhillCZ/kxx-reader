@@ -36,7 +36,6 @@ async function main() {
 
   // run the data throu all pipes
   sourceStream
-    //.pipe(progress) // show progress, passthrough
     .pipe(iconv.decodeStream("win1250")) // decode non utf charset
     .pipe(new LineSplit()) // split stream into lines
     .pipe(new RecordMerger()) // merge lines that form a record
