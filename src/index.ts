@@ -7,6 +7,8 @@ import { LineSplit, RecordMerger, RecordParser, Aggregator, RecordTap, CSVCreato
 // script arguments and settings 
 const args = require('minimist')(process.argv.slice(2));
 
+if(!args.source) throw new Error("Missing parameter: source");  
+
 const sourceFile = path.isAbsolute(args.source) ? args.source : path.resolve("./", args.source);
 const limit = Number(args.limit) || Infinity;
 
