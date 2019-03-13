@@ -13,10 +13,6 @@ export class Aggregator extends Transform {
   records: AggregatedRecord[] = [];
   recordIndex: { [key: string]: AggregatedRecord } = {};
 
-  typesIndex = {};
-
-  warnings: string[] = [];
-
   constructor() {
     super({
       writableObjectMode: true,
@@ -25,8 +21,6 @@ export class Aggregator extends Transform {
   }
 
   _transform(record: any, encoding: string, callback: TransformCallback) {
-
-    this.typesIndex[record.type] = this.typesIndex[record.type] ? this.typesIndex[record.type] + 1 : 1;
 
     if (Number(record.item) < 1000 || Number(record.item) >= 7000){
       callback();
