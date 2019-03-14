@@ -20,7 +20,7 @@ export class Aggregator extends Transform {
     });
   }
 
-  _transform(record: any, encoding: string, callback: TransformCallback) {
+  _transform(record: Record, encoding: string, callback: TransformCallback) {
 
     if (Number(record.item) < 1000 || Number(record.item) >= 7000){
       callback();
