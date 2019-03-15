@@ -1,22 +1,34 @@
 {
-  "name": "kxxreader",
+  "name": "kxx-reader",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "NodeJS stream to parse Gordic (Ginis) KXX export",
+  "main": "lib/index.js",
   "scripts": {
-    "start": "node index.js",
-    "build": "tsc",
-    "dev": "tsc -w"
+    "build": "tsc"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Martin Kopeček <martin.kopecek@smallhill.cz>",
+  "license": "GPL-3.0-or-later",
   "devDependencies": {
     "@types/node": "^11.11.3",
     "typescript": "^3.3.3333"
   },
   "dependencies": {
-    "fs-extra": "^7.0.1",
-    "iconv-lite": "^0.4.24",
-    "minimist": "^1.2.0"
-  }
+    "multipipe": "^3.0.1"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SmallhillCZ/kxx-reader.git"
+  },
+  "keywords": [
+    "gordic",
+    "ginis",
+    "kxx"
+  ],
+  "bugs": {
+    "url": "https://github.com/SmallhillCZ/kxx-reader/issues"
+  },
+  "homepage": "https://github.com/SmallhillCZ/kxx-reader#readme"
 }
