@@ -29,7 +29,7 @@ export class RecordParser extends Transform {
       case "5": this.parseOrgRecord(lines); break;
       case "6": this.parsePeriodRecord(lines); break;
       case "G": this.parseAccountingRecord(lines); break;
-      default: console.error("Unknown record type: %s", lines[0].charAt(0))
+      default: this.emit("Unknown record type: " + lines[0].charAt(0))
     }
     
     callback();
@@ -38,7 +38,7 @@ export class RecordParser extends Transform {
   parseOrgRecord(lines: string[]) {
     
     const matches = this.r_org.exec(lines[0]);
-    if(!matches) return console.log("Nečekaný formát záznamu.")
+    if(!matches) this.emit("Unexpected record format: " + lines[0])
     
     this.state.org = matches.groups.id;
   }
@@ -46,7 +46,7 @@ export class RecordParser extends Transform {
   parsePeriodRecord(lines: string[]) {    
     
     const matches = this.r_period.exec(lines[0]);
-    if(!matches) return console.log("Nečekaný formát záznamu.")
+    if(!matches) this.emit("Unexpected record format: " + lines[0])
     
     this.state.org = matches.groups.id;
     this.state.month = Number(matches.groups.month);
