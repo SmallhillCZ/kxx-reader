@@ -1,18 +1,37 @@
-# Tool to parse Gordic KXX export
+# Transform stream to parse Gordic KXX export
 
 ## Prerequisities
- - NodeJS 
+ - NodeJS or [stream-browserify](https://www.npmjs.com/package/stream-browserify)
  
 ## Installation
 
 ```bash
-git clone https://github.com/SmallhillCZ/kxxreader
-cd kxxreader
-npm install
-npm run build
+npm i kxx-reader
 ```
 
-## Run
-```bash
-npm start -- --source=data/ucr_2015_22,4,2016.kxx
+## Usage
+
+### Pipe data
+```typescript
+
+const KXXReader = require("kxx-reader");
+
+fs.createReadStream("./export.kxx")
+  .pipe( KXXReader() )
+  .pipe( /* consume JSON records */ ) 
+  
+```
+
+### Write directly
+
+```typescript
+const KXXReader = require("kxx-reader");
+
+const kxxreader = KXXReader();
+
+kxxreader.on("data", record => {
+  /* consume JSON records */
+});
+
+kxxreader.write("5/@.....");
 ```
