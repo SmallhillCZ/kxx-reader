@@ -1,7 +1,7 @@
 # Transform stream to parse Gordic KXX export
 
 ## Prerequisities
- - NodeJS or [stream-browserify](https://www.npmjs.com/package/stream-browserify)
+ - NodeJS
  
 ## Installation
 
@@ -34,4 +34,5 @@ kxxreader.on("data", record => {
 });
 
 kxxreader.write("5/@.....");
+kxxreader.end();
 ```
