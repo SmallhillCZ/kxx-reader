@@ -1,6 +1,6 @@
 import { LineSplit, RecordMerger, RecordParser } from "./transformers";
 import * as multipipe from "multipipe";
-import { Duplex } from "stream";
+import { Duplex } from "readable-stream";
 
 export function kxxreader(): Duplex {
 

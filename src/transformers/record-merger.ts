@@ -1,4 +1,7 @@
-import { Transform, TransformCallback } from "stream";
+import { Transform } from "readable-stream";
+
+// missing in @types/readable-stream
+type TransformCallback = (error?: Error, data?: any) => void;
 
 export class RecordMerger extends Transform {
 

@@ -1,5 +1,8 @@
-import { Transform, TransformCallback } from "stream";
+import { Transform } from "readable-stream";
 import { Record } from "../schema";
+
+// missing in @types/readable-stream
+type TransformCallback = (error?: Error, data?: any) => void;
 
 class RecordParserState {
   org:string;  
