@@ -34,4 +34,5 @@ kxxreader.on("data", record => {
 });
 
 kxxreader.write("5/@.....");
+kxxreader.end();
 ```
