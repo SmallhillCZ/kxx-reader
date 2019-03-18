@@ -9,11 +9,11 @@
   "author": "Martin Kopeček <martin.kopecek@smallhill.cz>",
   "license": "GPL-3.0-or-later",
   "devDependencies": {
-    "typescript": "^3.3.3333"
+    "typescript": "^3.3.3333",
+    "@types/node": "^11.11.3",
+    "@types/pumpify": "^1.4.1"
   },
   "dependencies": {
-    "@types/node": "^11.11.3",
-    "@types/pumpify": "^1.4.1",
     "pumpify": "^1.5.1"
   },
   "directories": {
