@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "target": "es5",
     "module": "commonjs",
-    "outDir": "dist/node/lib",
+    "outDir": "lib",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "sourceMap": true,
     "declaration": true,
-    "lib": ["es2015", "es2017"],
+    "lib": ["es2015", "es2017", "es2018"],
     "downlevelIteration":true
   },
   "include": [
@@ -15,5 +15,6 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "paths": { "stream": [ "../node_modules/readable-stream" ] }
 }

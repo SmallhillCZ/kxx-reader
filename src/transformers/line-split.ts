@@ -1,7 +1,4 @@
-import { Transform } from "readable-stream";
-
-// missing in @types/readable-stream
-type TransformCallback = (error?: Error, data?: any) => void;
+import { Transform, TransformCallback } from "stream";
 
 export class LineSplit extends Transform {
 
