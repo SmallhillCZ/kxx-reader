@@ -19,7 +19,7 @@ class KxxTransformStream<I, O> extends Transform {
   }
 
   _flush(callback: TransformCallback) {
-    this.transformer.end().then(() => callback(), err => callback(err));
+    this.transformer.flush().then(() => callback(), err => callback(err));
   }
 
 }
