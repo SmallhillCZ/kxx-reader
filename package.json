@@ -12,10 +12,10 @@
     "typescript": "^3.4.3"
   },
   "dependencies": {
+    "@types/duplexify": "^3.6.0",
     "@types/node": "^11.13.4",
-    "@types/pumpify": "^1.4.1",
-    "kxx-reader-core": "^1.5.2",
-    "pumpify": "^1.5.1"
+    "duplexify": "^4.0.0",
+    "kxx-reader-core": "^1.5.4"
   },
   "directories": {
     "lib": "lib"

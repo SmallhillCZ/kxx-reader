@@ -2,12 +2,13 @@ import Pumpify from "pumpify";
 import { Duplex, Transform, TransformOptions, TransformCallback } from "stream";
 
 import { KxxTransformer, LineSplit, RecordMerger, RecordParser, KxxRecord } from "kxx-reader-core";
+import duplexify from "duplexify";
 import { stringify } from "querystring";
 
 class KxxTransformStream<I, O> extends Transform {
 
-  constructor(private transformer: KxxTransformer<I,O>, options: TransformOptions) {
-    super({});
+  constructor(private transformer: KxxTransformer<I, O>, private options: TransformOptions) {
+    super(options);    
     this.transformer.start(
       (chunk: O) => this.push(chunk),
       (warning: string) => this.emit("warning", warning)
@@ -23,16 +24,23 @@ class KxxTransformStream<I, O> extends Transform {
   }
 
 }
-
 export function kxxreader(): Duplex {
 
-  return new Pumpify(
-    // split stream into lines
-    new KxxTransformStream<string,string>(new LineSplit(), { writableObjectMode: false, readableObjectMode: false }),
-    // merge lines that form a record
-    new KxxTransformStream<string,string[]>(new RecordMerger(), { writableObjectMode: false, readableObjectMode: true }),
-    // parse lines into JSON record with data
-    new KxxTransformStream<string[],KxxRecord>(new RecordParser(), { writableObjectMode: true, readableObjectMode: true })
-  )
+  // split stream into lines
+  const lineSplit: Transform = new KxxTransformStream<string, string>(new LineSplit(), { writableObjectMode: false, readableObjectMode: false });
+
+  // merge lines that form a record
+  const recordMerger: Transform = new KxxTransformStream<string, string[]>(new RecordMerger(), { writableObjectMode: false, readableObjectMode: true });
+
+  // parse lines into JSON record with data
+  const recordParser: Transform = new KxxTransformStream<string[], KxxRecord>(new RecordParser(), { writableObjectMode: true, readableObjectMode: true });
+
+
+  const resultStream = lineSplit.pipe(recordMerger).pipe(recordParser);
+
+  return duplexify(lineSplit, resultStream, {
+    writableObjectMode: false,
+    readableObjectMode: true
+  })
 
 }
